@@ -36,3 +36,30 @@ const greetingUser = greet.bind(person);
 console.log(greetingUser("Hello", "How are you?"))
 // Output: Hello Shalu Chaddha, How are you?
 
+```
+### Example of using Call, Bind and Apply
+
+```js
+const Calculator = {
+    value: 0,
+    add: function(num1, num2){
+         return this.value+=(num1+num2)
+    },
+    subtract: function(num){
+        return this.value -= num
+    }
+}
+
+const userValue = {
+    value: 8
+}
+
+// Using call to invoke subtract with 'this' set to userValue.It is invoked immediately and take arguments individually 
+console.log(Calculator.subtract.call(userValue, 5))
+// Using apply to invoke add with 'this' set to userValue. It is invoked immediately and take arguments in array
+console.log(Calculator.add.apply(userValue, [5, 3]))
+// Using bind to create a new function with 'this' bound to userValue and take arguments individually.
+console.log(Calculator.add.bind(userValue, 5, 3)())
+
+```
+
